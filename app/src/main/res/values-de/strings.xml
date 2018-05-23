@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dog Whisperer</string>
+    <string name="adults_button">Erwachsene</string>
+    <string name="btn_contact_us">Email</string>
+    <string name="btn_rate_app">Preis</string>
+    <string name="credits">Credits</string>
+    <string name="dog_button">Hund</string>
+    <string name="feedback">Rückkopplung</string>
+    <string name="feedback_title">Rückkopplung</string>
+    <string name="feedback_msg">Wir freuen uns über jede Rückmeldung</string>
+    <string name="icon_credit">Icon hergestellt von Pixel Perfect von www.flaticon.com</string>
+    <string name="kids_button">Kind</string>
+    <string name="seniors_button">Ältere</string>
+    <string name="share">Teilen mit anderen</string>
+    <string name="txt_no_email">Keine email</string>
+    <string name="ads_msg">Gib deinen Promocode hier ein. \n
+         \nWenn Sie keinen Freischaltcode haben,
+         Sende uns einfach eine kurze E-Mail-Anfrage!</string>
+    <string name="ads_title">Warum Anzeigen?</string>
+    <string name="button_why_ads">Warum Anzeigen?</string>
+    <string name="btn_review_app">Rezensieren</string>
+    <string name="welcome_premium">Premium genießen</string>
+    <string name="invalid_code">Code ungültig</string>
+    <string name="remove_ads">Werbefrei</string>
+    <string name="premium_action">Sonderangebot</string>
+    <string name="premium_title">Premium bekommen</string>
+    <string name="upgrade_canceled">Vielleicht nächstes Mal</string>
+    <string name="upgrade_unknown">Unbekannter Code in onPurchasesUpdated () erhalten</string>
+    <string name="premium_msg">Gib hier deinen Promo-Code ein. \n
+        \nWenn du keinen Entsperrcode hast,
+        Senden Sie uns einfach eine kurze E-Mail-Anfrage.</string>
+</resources>

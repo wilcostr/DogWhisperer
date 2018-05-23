@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Dog Whisperer</string>
+    <string name="ad_unit_id" translatable="false">ca-app-pub-5782047288878600/6375163672</string>
+
+    <string name="play_button" translatable="false">play button</string>
+    <string name="icon_credit">Icon made by Pixel Perfect from www.flaticon.com</string>
+    <string name="credits">Credits</string>
+
+    <string name="hz" translatable="false">"%1$.1f kHz"</string>
+    <string name="seniors_button">Seniors</string>
+    <string name="adults_button">Adults</string>
+    <string name="kids_button">Kids</string>
+    <string name="dog_button">Dogs</string>
+
+    <string name="share">Share</string>
+    <string name="feedback">Feedback</string>
+    <string name="feedback_title">Give Feedback</string>
+    <string name="feedback_msg">We would appreciate your feedback.\n
+        \nPlease consider leaving a review on Google Play if you enjoy using Dog Whisperer.
+    </string>
+    <string name="btn_rate_app">Rate App</string>
+    <string name="btn_review_app">Review App</string>
+    <string name="btn_contact_us">Email us</string>
+    <string name="txt_no_email">No email application found</string>
+
+    <string name="remove_ads">Remove ads</string>
+    <string name="button_why_ads">Why Ads?</string>
+    <string name="ads_title">Bothered by ads?</string>
+    <string name="ads_msg">Showing ads allow us to release free apps.\n
+        \nIf ads bother you and you would like to remove them, you can do so below.
+    </string>
+
+    <string name="premium_action">Promotion</string>
+    <string name="premium_title">Unlock premium</string>
+    <string name="premium_msg">Enter your promo code here.\n
+        \nIf you don\'t have an unlock code,
+        just send us a quick email request.
+    </string>
+
+    <string name="welcome_premium">Welcome to the premium experience</string>
+    <string name="invalid_code">Invalid code</string>
+
+    <string name="upgrade_canceled">Maybe next time. :)</string>
+    <string name="upgrade_unknown">Unknown resultCode received in onPurchasesUpdated()</string>
+
+</resources>

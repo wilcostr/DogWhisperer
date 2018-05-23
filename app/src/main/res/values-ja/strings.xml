@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">犬のささやき</string>
+    <string name="adults_button">大人</string>
+    <string name="btn_contact_us">Eメール</string>
+    <string name="credits">クレジット</string>
+    <string name="dog_button">犬</string>
+    <string name="feedback">フィードバック</string>
+    <string name="feedback_msg">私たちはあなたのフィードバックをいただければ幸いです。</string>
+    <string name="feedback_title">フィードバック</string>
+    <string name="icon_credit">www.flaticon.comからピクセルパーフェクトによって作られたアイコン</string>
+    <string name="btn_rate_app">レート</string>
+    <string name="kids_button">子供たち</string>
+    <string name="seniors_button">シニア</string>
+    <string name="share">シェア</string>
+    <string name="txt_no_email">メール見つかりません</string>
+    <string name="ads_title">なぜ広告？</string>
+    <string name="button_why_ads">なぜ広告？</string>
+    <string name="btn_review_app">批評する</string>
+    <string name="ads_msg">ここにプロモーションコードを入力してください。\n
+         ロック解除コードがない場合は、
+         ちょうど私達に速い電子メール要求を送りなさい！</string>
+    <string name="welcome_premium">最高のお楽しみ</string>
+    <string name="invalid_code">コードが無効です</string>
+    <string name="remove_ads">広告なし</string>
+    <string name="premium_action">プロモーション</string>
+    <string name="premium_title">プレミアムを得る</string>
+    <string name="upgrade_unknown">不明な結果</string>
+    <string name="upgrade_canceled">おそらく次回</string>
+    <string name="premium_msg">ここにプロモーションコードを入力してください。\n
+        \nもしあなたがロック解除コードを持っていないなら、
+        クイックメールのリクエストを送信してください。</string>
+</resources>

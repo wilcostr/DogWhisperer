@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background"
+    tools:context="za.co.twinc.dogwhisperer.MainActivity">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+        tools:ignore="WebViewLayout">
+
+        <ImageView
+            android:id="@+id/gif_imageview"
+            android:contentDescription="Dog Gif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/frequency_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gif_imageview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="@string/hz"
+            android:textSize="18sp" />
+
+        <SeekBar
+            android:id="@+id/frequency_seekBar"
+            android:layout_below="@id/frequency_textView"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/quick_buttons"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/frequency_seekBar"
+            android:padding="8dp"
+            >
+            <Button
+                android:id="@+id/senior_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onButtonSeniorClick"
+                android:text="@string/seniors_button" />
+            <Button
+                android:id="@+id/adult_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onButtonAdultClick"
+                android:text="@string/adults_button" />
+            <Button
+                android:id="@+id/kid_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onButtonKidClick"
+                android:text="@string/kids_button" />
+            <Button
+                android:id="@+id/dog_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onButtonDogClick"
+                android:text="@string/dog_button" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_below="@id/quick_buttons"
+            android:contentDescription="@string/play_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:onClick="onButtonPlayClick"
+            android:src="@android:drawable/ic_media_play"
+            />
+
+        <Button
+            android:id="@+id/why_ads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/play_button"
+            android:layout_alignParentEnd="true"
+            android:onClick="onButtonAdsClick"
+            android:text="@string/button_why_ads"
+            android:visibility="invisible"
+            style="?android:attr/borderlessButtonStyle"/>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/why_ads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:adSize="MEDIUM_RECTANGLE"
+            ads:adUnitId="@string/ad_unit_id"/>
+
+    </RelativeLayout>
+</ScrollView>

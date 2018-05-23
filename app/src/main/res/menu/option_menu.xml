@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_share"
+        android:orderInCategory="101"
+        android:title="@string/share"/>
+
+    <item
+        android:id="@+id/menu_feedback"
+        android:orderInCategory="102"
+        android:title="@string/feedback"/>
+
+    <item
+        android:id="@+id/menu_promotion"
+        android:orderInCategory="103"
+        android:title="@string/premium_action" />
+
+    <item
+        android:id="@+id/menu_credits"
+        android:orderInCategory="104"
+        android:title="@string/credits"/>
+
+    <item
+        android:id="@+id/menu_why_ads"
+        android:orderInCategory="105"
+        android:title="@string/remove_ads"/>
+
+
+
+
+</menu>

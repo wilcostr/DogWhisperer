@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dog Whisperer</string>
+    <string name="adults_button">Volwassene</string>
+    <string name="btn_contact_us">E-pos</string>
+    <string name="credits">Credits</string>
+    <string name="dog_button">Hond</string>
+    <string name="feedback">Terugvoer</string>
+    <string name="feedback_msg">Ons sal enige terugvoering waardeer</string>
+    <string name="feedback_title">Terugvoer</string>
+    <string name="icon_credit">Ikoon deur Pixel Perfect van www.flaticon.com</string>
+    <string name="kids_button">Kind</string>
+    <string name="seniors_button">Senior</string>
+    <string name="share">Deel</string>
+    <string name="txt_no_email">Geen e-pos app gevind</string>
+    <string name="btn_rate_app">Gradeer App</string>
+    <string name="ads_title">Hoekom advertensies?</string>
+    <string name="btn_review_app">Resenseer</string>
+    <string name="button_why_ads">Hoekom advertensies?</string>
+    <string name="ads_msg">Wees lekker en skryf \'n mooi review van die app, email vir my \'n
+        screenshot, en dan vat ek al jou advertensies weg!
+    </string>
+    <string name="welcome_premium">Geniet premium</string>
+    <string name="invalid_code">Kode ongeldig</string>
+    <string name="remove_ads">Verwyder advertensies</string>
+    <string name="premium_action">Promosie</string>
+    <string name="premium_title">Kry premium</string>
+    <string name="upgrade_canceled">Dalk volgende keer?</string>
+    <string name="upgrade_unknown">resultCode onbekend</string>
+    <string name="premium_msg">Voer hier jou promo kode in. \n
+        \nAs jy nie \'n ontsluitkode het nie,
+        stuur vir ons 'n vinnige e-pos versoek.</string>
+</resources>
