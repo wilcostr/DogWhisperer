@@ -29,14 +29,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/gif_imageview"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/hz"
             android:textSize="18sp" />
 
         <SeekBar
             android:id="@+id/frequency_seekBar"
             android:layout_below="@id/frequency_textView"
-            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -47,7 +48,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/frequency_seekBar"
-            android:padding="8dp"
             >
             <Button
                 android:id="@+id/senior_button"
@@ -83,22 +83,64 @@
                 android:text="@string/dog_button" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/play_button"
-            android:layout_below="@id/quick_buttons"
-            android:contentDescription="@string/play_button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/play_controls"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:onClick="onButtonPlayClick"
-            android:src="@android:drawable/ic_media_play"
-            />
+            android:layout_below="@id/quick_buttons"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+            <RadioGroup
+                android:id="@+id/modulation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <RadioButton
+                    android:id="@+id/modulation_am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AM" />
+
+                <RadioButton
+                    android:id="@+id/modulation_fm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FM" />
+
+                <RadioButton
+                    android:id="@+id/modulation_none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="No modulation" />
+
+            </RadioGroup>
+
+
+            <ImageButton
+                android:id="@+id/play_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/play_button"
+                android:onClick="onButtonPlayClick"
+                android:src="@android:drawable/ic_media_play" />
+
+
+        </LinearLayout>
+
+
 
         <Button
             android:id="@+id/why_ads"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/play_button"
+            android:layout_below="@+id/play_controls"
             android:layout_alignParentEnd="true"
             android:onClick="onButtonAdsClick"
             android:text="@string/button_why_ads"

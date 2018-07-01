@@ -20,6 +20,8 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +31,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity{
     private ImageButton playButton;
     private TextView frequencyTextView;
 
+    private int pauseCount;
+    private int modulationType;
     private final double minf = 5000;
     private double rangef;
 
@@ -58,6 +63,7 @@ public class MainActivity extends AppCompatActivity{
 
     private SeekBar frequencySeekBar;
 
+    private InterstitialAd mInterstitialAd;
     private AdView adView;
     private Button adButton;
 
@@ -85,6 +91,7 @@ public class MainActivity extends AppCompatActivity{
         if (isPremium)
             adView.setVisibility(View.GONE);
         else {
+            MobileAds.initialize(this, getString(R.string.app_id));
             // Load add
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice("5F2995EE0A8305DEB4C48C77461A7362")
@@ -96,6 +103,10 @@ public class MainActivity extends AppCompatActivity{
                     adButton.setVisibility(View.VISIBLE);
                 }
             });
+
+            // Initialise interstitial ad
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(getString(R.string.ad_unit_id_interstitial));
         }
 
         // Load dog gif
@@ -135,6 +146,18 @@ public class MainActivity extends AppCompatActivity{
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
+        RadioGroup modulationGroup = findViewById(R.id.modulation);
+        modulationGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                setModulation(i);
+            }
+        });
+        modulationGroup.check(main_log.getInt("modulation", R.id.modulation_none));
+        setModulation(modulationGroup.getCheckedRadioButtonId());
+
+        pauseCount = 0;
+
         // Create and initialize BillingManager which talks to BillingLibrary
         UpdateListener updateListener = new UpdateListener();
         mBillingManager = new BillingManager(this, updateListener);
@@ -152,6 +175,17 @@ public class MainActivity extends AppCompatActivity{
         if (isRunning) {
             stopAndDestroyThread();
             playButton.setImageResource(android.R.drawable.ic_media_play);
+            pauseCount ++;
+            if (!isPremium){
+                if (!mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.loadAd(new AdRequest.Builder()
+                            .addTestDevice("5F2995EE0A8305DEB4C48C77461A7362")
+                            .build());
+                }
+            }
+
+            if (pauseCount%4 == 0)
+                showAd();
         }
         else {
             createAndStartThread();
@@ -168,6 +202,40 @@ public class MainActivity extends AppCompatActivity{
         frequencySeekBar.setProgress((int)((f-minf)*frequencySeekBar.getMax()/rangef));
         frequency = f;
         frequencyTextView.setText(String.format(getString(R.string.hz),frequency*0.001));
+    }
+
+    private void setModulation(int i){
+        SharedPreferences mainPrefs = getSharedPreferences(MAIN_PREFS, 0);
+        SharedPreferences.Editor editor = mainPrefs.edit();
+        editor.putInt("modulation",i);
+        editor.apply();
+        switch (i){
+            case R.id.modulation_am:
+                modulationType = 1;
+                return;
+            case R.id.modulation_fm:
+                modulationType = 2;
+                return;
+            case R.id.modulation_none:
+                modulationType = 0;
+        }
+    }
+
+    private void showAd(){
+        SharedPreferences mainPrefs = getSharedPreferences(MAIN_PREFS, 0);
+        if (mainPrefs.getBoolean("show_feedback", true)){
+            SharedPreferences.Editor editor = mainPrefs.edit();
+            editor.putBoolean("show_feedback", false);
+            editor.apply();
+            feedback();
+        }
+        else{
+            if (isPremium)
+                return;
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            }
+        }
     }
 
     private void createAndStartThread(){
@@ -194,6 +262,7 @@ public class MainActivity extends AppCompatActivity{
                 int amplitude = 10000;
                 double twopi = 8.*Math.atan(1.0);
                 double omega = 0;
+                double modulation = 0;
 
                 // Start the audio
                 audioTrack.play();
@@ -202,7 +271,14 @@ public class MainActivity extends AppCompatActivity{
                 while(isRunning){
                     for(int i=0; i<bufferSize; i++){
                         samples[i] = (short) (amplitude*Math.sin(omega));
-                        omega += twopi*frequency/sampleRate;
+                        modulation += twopi*2/sampleRate;
+                        if (modulationType==1)
+                            samples[i] *= (0.55 + 0.45*Math.sin(modulation/2));
+                        if (modulationType==2)
+                            omega += twopi*(frequency+1e3*Math.sin(modulation))/sampleRate;
+                        else
+                            omega += twopi*frequency/sampleRate;
+
                     }
                     audioTrack.write(samples, 0, bufferSize);
                 }

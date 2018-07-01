@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Dog Whisperer</string>
+    <string name="app_id" translatable="false">ca-app-pub-5782047288878600~7543763355</string>
     <string name="ad_unit_id" translatable="false">ca-app-pub-5782047288878600/6375163672</string>
+    <string name="ad_unit_id_interstitial" translatable="false">ca-app-pub-5782047288878600/6009513030</string>
 
     <string name="play_button" translatable="false">play button</string>
     <string name="icon_credit">Icon made by Pixel Perfect from www.flaticon.com</string>
@@ -14,7 +16,7 @@
 
     <string name="share">Share</string>
     <string name="feedback">Feedback</string>
-    <string name="feedback_title">Give Feedback</string>
+    <string name="feedback_title">Enjoying the app?</string>
     <string name="feedback_msg">We would appreciate your feedback.\n
         \nPlease consider leaving a review on Google Play if you enjoy using Dog Whisperer.
     </string>
