@@ -32,8 +32,14 @@
         \nIf ads bother you and you would like to remove them, you can do so below.
     </string>
 
+    <string name="background_message">Background playback is a premium feature</string>
+    <string name="background_button">Get premium</string>
+
+    <string name="continue_playback_title">Continue playback</string>
+    <string name="continue_playback_msg">Sound will continue after exit.</string>
+
     <string name="premium_action">Promotion</string>
-    <string name="premium_title">Unlock premium</string>
+    <string name="premium_unlock">Unlock premium</string>
     <string name="premium_msg">Enter your promo code here.\n
         \nIf you don\'t have an unlock code,
         just send us a quick email request.

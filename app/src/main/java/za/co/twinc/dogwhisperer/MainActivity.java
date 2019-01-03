@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity{
 
     private BillingManager mBillingManager;
     private boolean isPremium;
+    private boolean premiumPrompt;
 
     private ImageButton playButton;
     private TextView frequencyTextView;
@@ -157,10 +158,66 @@ public class MainActivity extends AppCompatActivity{
         setModulation(modulationGroup.getCheckedRadioButtonId());
 
         pauseCount = 0;
+        premiumPrompt = main_log.getBoolean("premiumPrompt", false);
 
         // Create and initialize BillingManager which talks to BillingLibrary
         UpdateListener updateListener = new UpdateListener();
         mBillingManager = new BillingManager(this, updateListener);
+    }
+
+    @Override
+    public void onPause(){
+        if (isRunning && !isPremium){
+            premiumPrompt = true;
+            SharedPreferences mainPrefs = getSharedPreferences(MAIN_PREFS, 0);
+            SharedPreferences.Editor editor = mainPrefs.edit();
+            editor.putBoolean("premiumPrompt", true);
+            editor.apply();
+            stopAndDestroyThread();
+            playButton.setImageResource(android.R.drawable.ic_media_play);
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume(){
+        if (premiumPrompt){
+            // Background playback is a premium feature
+            premiumPrompt = false;
+            SharedPreferences mainPrefs = getSharedPreferences(MAIN_PREFS, 0);
+            SharedPreferences.Editor editor = mainPrefs.edit();
+            editor.putBoolean("premiumPrompt", false);
+            editor.apply();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.background_message);
+            builder.setPositiveButton(R.string.background_button, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    mBillingManager.initiatePurchaseFlow("premium", BillingClient.SkuType.INAPP);
+                }
+            });
+            builder.setNegativeButton(android.R.string.cancel, null);
+            builder.create().show();
+        }
+        super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isPremium && isRunning) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources().getString(R.string.continue_playback_title));
+            builder.setMessage(getResources().getString(R.string.continue_playback_msg));
+
+            builder.setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    moveTaskToBack(true);
+                }
+            });
+            builder.setNegativeButton(getString(android.R.string.cancel), null);
+            builder.create().show();
+        }
+        else
+            super.onBackPressed();
     }
 
     public void onDestroy(){
@@ -175,7 +232,7 @@ public class MainActivity extends AppCompatActivity{
         if (isRunning) {
             stopAndDestroyThread();
             playButton.setImageResource(android.R.drawable.ic_media_play);
-            pauseCount ++;
+            pauseCount++;
             if (!isPremium){
                 if (!mInterstitialAd.isLoaded()) {
                     mInterstitialAd.loadAd(new AdRequest.Builder()
@@ -184,7 +241,7 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
 
-            if (pauseCount%4 == 0)
+            if (pauseCount%3 == 0)
                 showAd();
         }
         else {
@@ -227,6 +284,8 @@ public class MainActivity extends AppCompatActivity{
             SharedPreferences.Editor editor = mainPrefs.edit();
             editor.putBoolean("show_feedback", false);
             editor.apply();
+            //On first install show ad after 5 pauses.
+            pauseCount++;
             feedback();
         }
         else{
@@ -273,7 +332,7 @@ public class MainActivity extends AppCompatActivity{
                         samples[i] = (short) (amplitude*Math.sin(omega));
                         modulation += twopi*2/sampleRate;
                         if (modulationType==1)
-                            samples[i] *= (0.55 + 0.45*Math.sin(modulation/2));
+                            samples[i] *= (0.55 + 0.45*Math.sin(modulation*0.67));
                         if (modulationType==2)
                             omega += twopi*(frequency+1e3*Math.sin(modulation))/sampleRate;
                         else
@@ -323,10 +382,7 @@ public class MainActivity extends AppCompatActivity{
             case R.id.menu_credits:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(R.string.icon_credit);
-                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
+                builder.setPositiveButton(android.R.string.ok, null);
                 builder.create().show();
                 return true;
             case R.id.menu_share:
@@ -380,7 +436,6 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
-
         builder.create().show();
     }
 
@@ -434,7 +489,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void promotion(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.premium_title);
+        builder.setTitle(R.string.premium_unlock);
         builder.setMessage(R.string.premium_msg);
 
         final EditText input = new EditText(getApplicationContext());

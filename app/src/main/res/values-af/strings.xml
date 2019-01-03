@@ -24,10 +24,14 @@
     <string name="invalid_code">Kode ongeldig</string>
     <string name="remove_ads">Verwyder advertensies</string>
     <string name="premium_action">Promosie</string>
-    <string name="premium_title">Kry premium</string>
     <string name="upgrade_canceled">Dalk volgende keer?</string>
     <string name="upgrade_unknown">resultCode onbekend</string>
     <string name="premium_msg">Voer hier jou promo kode in. \n
         \nAs jy nie \'n ontsluitkode het nie,
         stuur vir ons 'n vinnige e-pos versoek.</string>
+    <string name="background_message">Om die app in die agtergrond te gebruik verg \'n premium opgradering</string>
+    <string name="background_button">Kry premium</string>
+    <string name="continue_playback_msg">Die klank sal aanhou speel.</string>
+    <string name="continue_playback_title">Plaas die app in die agtergrond</string>
+    <string name="premium_unlock">Kry premium</string>
 </resources>

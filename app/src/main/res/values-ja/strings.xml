@@ -24,10 +24,14 @@
     <string name="invalid_code">コードが無効です</string>
     <string name="remove_ads">広告なし</string>
     <string name="premium_action">プロモーション</string>
-    <string name="premium_title">プレミアムを得る</string>
     <string name="upgrade_unknown">不明な結果</string>
     <string name="upgrade_canceled">おそらく次回</string>
     <string name="premium_msg">ここにプロモーションコードを入力してください。\n
         \nもしあなたがロック解除コードを持っていないなら、
         クイックメールのリクエストを送信してください。</string>
+    <string name="background_button">プレミアムを得る</string>
+    <string name="background_message">背景の再生はプレミアム機能です</string>
+    <string name="continue_playback_title">再生を続ける</string>
+    <string name="continue_playback_msg">終了後も音が鳴ります。</string>
+    <string name="premium_unlock">プレミアムを得る</string>
 </resources>

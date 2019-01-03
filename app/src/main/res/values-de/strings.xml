@@ -24,10 +24,14 @@
     <string name="invalid_code">Code ungültig</string>
     <string name="remove_ads">Werbefrei</string>
     <string name="premium_action">Sonderangebot</string>
-    <string name="premium_title">Premium bekommen</string>
     <string name="upgrade_canceled">Vielleicht nächstes Mal</string>
     <string name="upgrade_unknown">Unbekannter Code in onPurchasesUpdated () erhalten</string>
     <string name="premium_msg">Gib hier deinen Promo-Code ein. \n
         \nWenn du keinen Entsperrcode hast,
         Senden Sie uns einfach eine kurze E-Mail-Anfrage.</string>
+    <string name="background_button">Premium bekommen</string>
+    <string name="background_message">Hintergrundwiedergabe ist eine Premium-Funktion</string>
+    <string name="continue_playback_title">Wiedergabe fortsetzen</string>
+    <string name="continue_playback_msg">Der Ton wird nach dem Beenden fortgesetzt.</string>
+    <string name="premium_unlock">Premium bekommen</string>
 </resources>
