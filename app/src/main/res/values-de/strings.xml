@@ -34,4 +34,5 @@
     <string name="continue_playback_title">Wiedergabe fortsetzen</string>
     <string name="continue_playback_msg">Der Ton wird nach dem Beenden fortgesetzt.</string>
     <string name="premium_unlock">Premium bekommen</string>
+    <string name="privacy_policy">Datenschutz-Bestimmungen</string>
 </resources>

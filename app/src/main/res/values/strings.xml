@@ -45,6 +45,8 @@
         just send us a quick email request.
     </string>
 
+    <string name="privacy_policy">Privacy policy</string>
+
     <string name="welcome_premium">Welcome to the premium experience</string>
     <string name="invalid_code">Invalid code</string>
 

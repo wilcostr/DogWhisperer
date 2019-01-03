@@ -34,4 +34,5 @@
     <string name="continue_playback_title">再生を続ける</string>
     <string name="continue_playback_msg">終了後も音が鳴ります。</string>
     <string name="premium_unlock">プレミアムを得る</string>
+    <string name="privacy_policy">個人情報保護方針</string>
 </resources>

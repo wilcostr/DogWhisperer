@@ -34,4 +34,5 @@
     <string name="continue_playback_msg">Die klank sal aanhou speel.</string>
     <string name="continue_playback_title">Plaas die app in die agtergrond</string>
     <string name="premium_unlock">Kry premium</string>
+    <string name="privacy_policy">Privaatheidsbeleid</string>
 </resources>

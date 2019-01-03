@@ -402,6 +402,11 @@ public class MainActivity extends AppCompatActivity{
             case R.id.menu_promotion:
                 promotion();
                 return true;
+            case R.id.menu_privacy_policy:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://sites.google.com/view/twincapps-privacypolicy/home"));
+                startActivity(browserIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
